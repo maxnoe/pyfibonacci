@@ -14,7 +14,17 @@ def test_fibonacci(n, expected):
 
 @pytest.mark.parametrize('n', [-1, -5, -1000])
 def test_invalid(n):
-    from fibonacci import fibonacci
+    from fibonacci import fibonacci, fibonacci_generator
 
     with pytest.raises(ValueError):
         fibonacci(n)
+
+    with pytest.raises(ValueError):
+        next(fibonacci_generator(n))
+
+
+def test_generator():
+    from fibonacci import fibonacci_generator
+
+    n = len(FIBONACCI_NUMBERS)
+    assert list(fibonacci_generator(n)) == FIBONACCI_NUMBERS
