@@ -1,7 +1,7 @@
-from functools import lru_cache
+from functools import cache
 
 
-@lru_cache()
+@cache
 def fibonacci(n):
     '''
     Calculate the nth fibonacci number using recursion and memoization
